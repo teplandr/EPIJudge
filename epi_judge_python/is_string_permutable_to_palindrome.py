@@ -1,9 +1,15 @@
+from collections import Counter
+
 from test_framework import generic_test
 
 
 def can_form_palindrome(s: str) -> bool:
-    # TODO - you fill in here.
-    return True
+    hashtable = Counter(s)
+    odd_counter = 0
+    for char_count in hashtable.values():
+        if char_count & 1:
+            odd_counter += 1
+    return odd_counter <= 1
 
 
 if __name__ == '__main__':

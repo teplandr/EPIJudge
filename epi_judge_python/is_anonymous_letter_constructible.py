@@ -1,11 +1,21 @@
+from collections import Counter
+
 from test_framework import generic_test
 
 
 def is_letter_constructible_from_magazine(letter_text: str,
                                           magazine_text: str) -> bool:
-    # TODO - you fill in here.
+    magazine_chars = Counter(magazine_text)
+    for letter_char in letter_text:
+        if letter_char in magazine_chars:
+            magazine_chars[letter_char] -= 1
+        else:
+            return False
+    for used_chars in magazine_chars.values():
+        if used_chars < 0:
+            return False
     return True
-
+    # return not Counter(letter_text) - Counter(magazine_text)
 
 if __name__ == '__main__':
     exit(
