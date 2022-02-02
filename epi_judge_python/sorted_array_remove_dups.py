@@ -9,13 +9,12 @@ from test_framework.test_utils import enable_executor_hook
 def delete_duplicates(A: List[int]) -> int:
     if not A:
         return 0
-
-    index = 1
+    write_index = 1
     for i in range(1, len(A)):
-        if A[index - 1] != A[i]:
-            A[index] = A[i]
-            index += 1
-    return index
+        if A[write_index - 1] != A[i]:
+            A[write_index] = A[i]
+            write_index += 1
+    return write_index
 
 
 @enable_executor_hook

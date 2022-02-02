@@ -3,10 +3,8 @@ from test_framework import generic_test
 
 def power(x: float, y: int) -> float:
     result, exp = 1., y
-
     if y < 0:
         exp, x = -exp, 1. / x
-
     while exp:
         if exp & 1:
             result *= x

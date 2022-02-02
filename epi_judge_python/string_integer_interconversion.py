@@ -5,24 +5,20 @@ from test_framework.test_failure import TestFailure
 def int_to_string(x: int) -> str:
     if x == 0:
         return '0'
-
-    tmp = []
-    x_abs = abs(x)
+    negative, x_abs, result = x < 0, abs(x), []
     while x_abs:
-        tmp += chr(ord('0') + x_abs % 10)
+        result.append(chr(ord('0') + x_abs % 10))
         x_abs //= 10
-
-    if x < 0:
-        tmp += '-'
-
-    return ''.join(reversed(tmp))
+    if negative:
+        result.append('-')
+    return ''.join(reversed(result))
 
 
 def string_to_int(s: str) -> int:
     result = 0
     start = 1 if s[0] == '+' or s[0] == '-' else 0
     for c in s[start:]:
-        result = result * 10 + (ord(c) - ord('0'))
+        result = 10 * result + (ord(c) - ord('0'))
     return -result if s[0] == '-' else result
 
 

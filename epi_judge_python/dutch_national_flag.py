@@ -15,7 +15,6 @@ def dutch_flag_partition(pivot_index: int, A: List[int]) -> None:
         if A[i] < pivot:
             A[i], A[less] = A[less], A[i]
             less += 1
-
     greater = len(A) - 1
     for j in reversed(range(len(A))):
         if A[j] < pivot:
