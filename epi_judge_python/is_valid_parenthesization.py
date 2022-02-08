@@ -2,8 +2,13 @@ from test_framework import generic_test
 
 
 def is_well_formed(s: str) -> bool:
-    # TODO - you fill in here.
-    return True
+    stack, brackets = [], {'(': ')', '[': ']', '{': '}'}
+    for c in s:
+        if c in brackets:
+            stack.append(c)
+        elif not stack or brackets[stack.pop()] != c:
+            return False
+    return not stack
 
 
 if __name__ == '__main__':
